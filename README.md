@@ -23,5 +23,7 @@ Create a production build with:
 npm run build
 ```
 
-The site is configured for deployment through OpenAI Sites. Source development
-remains independent from the main Husky repository.
+The site is deployed to GitHub Pages at
+[blog.husky-lang.org](https://blog.husky-lang.org). Pushes to `main` publish
+the static export automatically. Source development remains independent from
+the main Husky repository.
