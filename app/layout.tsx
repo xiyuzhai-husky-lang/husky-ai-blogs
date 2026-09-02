@@ -1,17 +1,5 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono, Manrope } from 'next/font/google';
 import './globals.css';
-
-const sans = Manrope({
-  variable: '--font-sans',
-  subsets: ['latin'],
-});
-
-const mono = IBM_Plex_Mono({
-  variable: '--font-mono',
-  subsets: ['latin'],
-  weight: ['400', '500'],
-});
 
 const siteUrl = new URL(
   process.env.SITE_URL ?? 'http://localhost:3000',
@@ -31,9 +19,9 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/og.png',
-        width: 1734,
-        height: 907,
-        alt: 'Husky AI Blogs — Intelligence, made precise.',
+        width: 1731,
+        height: 909,
+        alt: 'Husky AI Blogs',
       },
     ],
   },
@@ -48,7 +36,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${mono.variable}`}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
