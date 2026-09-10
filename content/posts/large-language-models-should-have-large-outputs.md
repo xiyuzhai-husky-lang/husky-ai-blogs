@@ -123,6 +123,16 @@ A system built to assist humans should take advantage of the structures that hum
 
 That is the sense in which large language models should have large outputs: the work they make available for inspection should be much larger than the few sentences through which we talk to them.
 
+## Beyond words
+
+The opportunity also extends to the kinds of things a system can output. A token need not represent a fragment of ordinary language. Output vocabularies could encode operations in a new programming language, references to structured mathematical objects, or learned discrete codes. Some channels could carry continuous representations instead; strictly speaking, those would not be discrete tokens. Audio generation in Qwen2.5-Omni [[9]](#reference-9) and learned latent codes in Kaiser et al. [[7]](#reference-7) already illustrate pieces of this broader design space.
+
+The basic symbols of a language are like atoms in the world it lets us construct. Changing those building blocks can make useful distinctions and operations easier to express, combine, and manipulate. This is not a claim that a larger vocabulary automatically creates more information or greater theoretical expressive power. A sufficiently general language can already encode many of the same objects. The opportunity is to give the system representations in which important structure becomes accessible without repeatedly reconstructing it from long descriptions.
+
+I expect some of these representations to be learned and refined alongside the models that use them. New programming languages, structured output formats, and machine-oriented representations could become part of how AI handles problems that fit poorly into conversational text. Their value would be demonstrated by better solutions and more reliable checks, with explicit interfaces back to the people who need to understand and control the work.
+
+The forecast is therefore about both the amount of output and the richness of its building blocks. AI could make more of its computation useful by expanding what it can express, and by choosing forms of expression that better match the problems we ask it to solve.
+
 ## References
 
 <a id="reference-1"></a>
