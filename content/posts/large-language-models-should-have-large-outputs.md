@@ -35,6 +35,14 @@ For a human, supplying all this material is costly. A mathematician who has foun
 
 We should ask how much of this tradeoff AI actually needs to inherit.
 
+## The demand already exists in engineering
+
+I am already putting this idea into practice in a workflow I call the *zouzhe* (奏折) system, after the written memorials submitted to an emperor. For a proposed change, I ask for the problem analysis, relevant context, the criteria and guidelines for judging a solution, the design, the implementation, the diff, and the tests and their results. I want the whole account written down so that the change can be examined against the problem it was meant to solve.
+
+Compared with a review centered on a patch and a short explanation, this asks for a much larger body of material. A GitHub pull request can certainly contain all of it; the change in my workflow is to make that fuller account an explicit requirement. The implementation becomes one part of the deliverable, alongside the information needed to assess it.
+
+This is an engineering practice, not yet a model architecture. I currently obtain the material by organizing the workflow around existing models. Their generation process has not been specifically adapted to this division of work. The practice motivates the architectural question: can a model produce this richer deliverable by sharing its expensive computation across specialized output paths? It establishes a concrete use for large outputs, while leaving the efficiency of the proposed architecture to be demonstrated.
+
 ## Token count is not complexity
 
 A token is a unit of encoded representation. It is not a measure of the complexity of producing that representation, or of the quality of the process that produced it. The very same token can be copied, guessed, or selected after substantial computation and checking. Its identity does not tell us which happened, how reliable the result is, or what it cost. A token is not a fixed quantity of information either: its information content depends on context and predictability.
@@ -129,7 +137,7 @@ The opportunity also extends to the kinds of things a system can output. A token
 
 The basic symbols of a language are like atoms in the world it lets us construct. Changing those building blocks can make useful distinctions and operations easier to express, combine, and manipulate. This is not a claim that a larger vocabulary automatically creates more information or greater theoretical expressive power. A sufficiently general language can already encode many of the same objects. The opportunity is to give the system representations in which important structure becomes accessible without repeatedly reconstructing it from long descriptions.
 
-I expect some of these representations to be learned and refined alongside the models that use them. New programming languages, structured output formats, and machine-oriented representations could become part of how AI handles problems that fit poorly into conversational text. Their value would be demonstrated by better solutions and more reliable checks, with explicit interfaces back to the people who need to understand and control the work.
+A more speculative possibility is that these representations could be learned and refined alongside the models that use them. New programming languages, structured output formats, and machine-oriented representations could become part of how AI handles problems that fit poorly into conversational text. Their value would be demonstrated by better solutions and more reliable checks, with explicit interfaces back to the people who need to understand and control the work.
 
 The forecast is therefore about both the amount of output and the richness of its building blocks. AI could make more of its computation useful by expanding what it can express, and by choosing forms of expression that better match the problems we ask it to solve.
 
