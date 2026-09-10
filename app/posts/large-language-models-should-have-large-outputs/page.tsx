@@ -4,7 +4,7 @@ import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { marked } from 'marked';
 
-const title = 'Large Language Models Should Have Large Outputs';
+const title = 'Large Language Models Should Have Larger Outputs';
 const description = 'A prediction about shared computation, specialized output branches, and more inspectable AI work.';
 const articlePath = '/posts/large-language-models-should-have-large-outputs/';
 

@@ -10,7 +10,7 @@ export default function Home() {
       <ul>
         <li>
           <a href="/posts/large-language-models-should-have-large-outputs/">
-            Large Language Models Should Have Large Outputs
+            Large Language Models Should Have Larger Outputs
           </a>
           {' '}— <time dateTime="2026-09-09">September 9, 2026</time>
         </li>

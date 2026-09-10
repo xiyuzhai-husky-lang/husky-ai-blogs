@@ -1,4 +1,4 @@
-# Large Language Models Should Have Large Outputs
+# Large Language Models Should Have Larger Outputs
 
 Human communication has limited bandwidth. Large language models learn from the language we produce, and we often organize their outputs as if they were people exchanging messages. My argument is that this inherited pattern leaves much of AI's potential unused. Over the next few years, I expect systems to increasingly reuse expensive internal computation through specialized output branches, producing far more explanation, justification, and checkable evidence than their main answers alone. If this potential is realized, it could drive a new wave of progress across the AI industry, with particularly significant opportunities for open models, whose internal representations and execution can be examined and extended.
 
