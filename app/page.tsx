@@ -7,7 +7,14 @@ export default function Home() {
       <hr />
 
       <h2>Posts</h2>
-      <p>No posts yet.</p>
+      <ul>
+        <li>
+          <a href="/posts/large-language-models-should-have-large-outputs/">
+            Large Language Models Should Have Large Outputs
+          </a>
+          {' '}— <time dateTime="2026-09-09">September 9, 2026</time>
+        </li>
+      </ul>
 
       <hr />
 

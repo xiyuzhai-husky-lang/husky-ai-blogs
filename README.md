@@ -12,6 +12,11 @@ belong here.
 
 ## Development
 
+Published article sources live in `content/posts/` as Markdown. Article routes
+in `app/posts/` render them at build time, including tables and reference links.
+The home page lists each published article. Edit the Markdown source to revise
+an article; previews are available through the development server.
+
 ```sh
 npm install
 npm run dev

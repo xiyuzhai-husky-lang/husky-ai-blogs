@@ -36,3 +36,37 @@ hr {
   border-top: 1px solid #bbb;
   margin: 2rem 0;
 }
+
+nav {
+  margin-bottom: 1.5rem;
+}
+
+.post-date {
+  color: #555;
+  font-size: 0.875rem;
+}
+
+article {
+  overflow-wrap: anywhere;
+}
+
+article h2 {
+  margin-top: 2rem;
+}
+
+article table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+article th,
+article td {
+  border: 1px solid #bbb;
+  padding: 0.5rem;
+  min-width: 8rem;
+  text-align: left;
+  vertical-align: top;
+}
