@@ -37,7 +37,7 @@ We should ask how much of this tradeoff AI actually needs to inherit.
 
 ## The demand already exists in engineering
 
-I am already putting this idea into practice in a workflow I call the *zouzhe* (奏折) system, after the written memorials submitted to an emperor. For a proposed change, I ask for the problem analysis, relevant context, the criteria and guidelines for judging a solution, the design, the implementation, the diff, and the tests and their results. I want the whole account written down so that the change can be examined against the problem it was meant to solve.
+I am already putting this idea into practice in a workflow I call the proposal system. For a proposed change, I ask for the problem analysis, relevant context, the criteria and guidelines for judging a solution, the design, the implementation, the diff, and the tests and their results. I want the whole account written down so that the change can be examined against the problem it was meant to solve.
 
 Compared with a review centered on a patch and a short explanation, this asks for a much larger body of material. A GitHub pull request can certainly contain all of it; the change in my workflow is to make that fuller account an explicit requirement. The implementation becomes one part of the deliverable, alongside the information needed to assess it.
 
