@@ -1,43 +1,36 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
+import type { ReactNode } from 'react';
 import { marked } from 'marked';
-import FlowField from '../../components/FlowField';
-import OutputExplorer from '../../components/OutputExplorer';
 
-const title = 'Large Language Models Should Have Larger Outputs';
-const description = 'A prediction about shared computation, specialized output branches, and more inspectable AI work.';
-const articlePath = '/posts/large-language-models-should-have-large-outputs/';
-
-export const metadata: Metadata = {
-  title: `${title} | Husky AI Blogs`,
-  description,
-  alternates: { canonical: articlePath },
-  openGraph: {
-    title,
-    description,
-    type: 'article',
-    url: articlePath,
-    publishedTime: '2026-09-09',
-  },
-  twitter: { card: 'summary', title, description },
+type EssayProps = {
+  slug: string;
+  title: ReactNode;
+  category: string;
+  number: string;
+  date: string;
+  displayDate: string;
+  illustration: ReactNode;
+  caption: ReactNode;
+  sidebarNote: string;
+  jumpLink?: { href: string; label: string };
+  afterSections?: Record<string, ReactNode>;
 };
 
-export default async function Post() {
-  const markdown = await readFile(
-    path.join(process.cwd(), 'content/posts/large-language-models-should-have-large-outputs.md'),
-    'utf8',
-  );
+export default async function Essay({
+  slug, title, category, number, date, displayDate,
+  illustration, caption, sidebarNote, jumpLink, afterSections,
+}: EssayProps) {
+  const markdown = await readFile(path.join(process.cwd(), 'content/posts', `${slug}.md`), 'utf8');
   const [opening, ...parts] = markdown.replace(/^# .+\n/, '').trim().split(/^## /m);
-  // HTML is generated only from this repository's reviewed Markdown.
+  // Article HTML comes only from this repository's authored Markdown.
   const introduction = await marked.parse(opening);
   const sections = await Promise.all(parts.map(async part => {
     const lineEnd = part.indexOf('\n');
     const heading = part.slice(0, lineEnd).trim();
-    const id = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
-    const html = (await marked.parse(part.slice(lineEnd + 1)))
-      .replace(/<table>([\s\S]*?)<\/table>/g, '<div class="table-scroll" role="region" aria-label="Human communication rates" tabindex="0"><table>$1</table></div>');
+    const id = heading.toLowerCase().replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+    const html = await marked.parse(part.slice(lineEnd + 1));
     return { heading, id, html };
   }));
   const readingMinutes = Math.ceil(markdown.split('## References')[0].split(/\s+/).length / 220);
@@ -46,17 +39,20 @@ export default async function Post() {
     <main id="main-content" className="essay-page">
       <article>
         <header className="essay-hero">
-          <div className="hero-topline"><Link href="/">← All essays</Link><span className="eyebrow">AI architecture / Essay 001</span></div>
+          <div className="hero-topline">
+            <Link href="/">← All essays</Link>
+            <span className="eyebrow">{category} / Essay {number}</span>
+          </div>
           <div className="hero-grid">
             <div className="hero-copy">
-              <h1>Large Language Models Should Have <em>Larger Outputs</em></h1>
+              <h1>{title}</h1>
               <div className="hero-introduction" dangerouslySetInnerHTML={{ __html: introduction }} />
-              <div className="hero-meta"><time dateTime="2026-09-09">September 9, 2026</time><span>{readingMinutes} min read</span></div>
-              <a className="text-link" href="#output-explorer">Explore the idea <span aria-hidden="true">↓</span></a>
+              <div className="hero-meta"><time dateTime={date}>{displayDate}</time><span>{readingMinutes} min read</span></div>
+              {jumpLink && <a className="text-link" href={jumpLink.href}>{jumpLink.label}<span aria-hidden="true">↓</span></a>}
             </div>
             <figure className="hero-art">
-              <FlowField />
-              <figcaption><span className="figure-number">FIG. 01</span> Expanding shared computation into useful output.<br /><span className="figure-note">A conceptual architecture.</span></figcaption>
+              {illustration}
+              <figcaption><span className="figure-number">FIG. 01</span>{caption}<br /><span className="figure-note">A conceptual illustration.</span></figcaption>
             </figure>
           </div>
         </header>
@@ -66,14 +62,14 @@ export default async function Post() {
               <span className="eyebrow">In this essay</span>
               <ol>{sections.map(section => <li key={section.id}><a href={`#${section.id}`}>{section.heading}</a></li>)}</ol>
             </nav>
-            <p className="sidebar-note">A prediction about the next few years of AI.</p>
+            <p className="sidebar-note">{sidebarNote}</p>
           </aside>
           <div className="article-main">
             {sections.map((section, index) => (
               <section key={section.id} id={section.id} className={`essay-section${section.id === 'references' ? ' references-section' : ''}`} aria-labelledby={`${section.id}-heading`}>
                 <div className="section-heading"><span className="section-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span><h2 id={`${section.id}-heading`}>{section.heading}</h2></div>
                 <div className="prose" dangerouslySetInnerHTML={{ __html: section.html }} />
-                {section.id === 'reuse-the-expensive-computation' && <OutputExplorer />}
+                {afterSections?.[section.id]}
               </section>
             ))}
             <div className="essay-end"><span className="end-mark" aria-hidden="true">✳</span><Link href="/">Back to all essays <span aria-hidden="true">↗</span></Link></div>

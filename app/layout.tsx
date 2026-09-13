@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import SiteHeader from './components/SiteHeader';
 
 const siteUrl = new URL(
   process.env.SITE_URL ?? 'http://localhost:3000',
@@ -36,7 +37,16 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <a className="skip-link" href="#main-content">Skip to content</a>
+        <SiteHeader />
+        {children}
+        <footer className="site-footer">
+          <span>Husky AI Blogs</span>
+          <span>Artificial intelligence · Formal reasoning · Programming languages</span>
+          <a href="https://github.com/xiyuzhai-husky-lang/husky-ai-blogs">Source ↗</a>
+        </footer>
+      </body>
     </html>
   );
 }

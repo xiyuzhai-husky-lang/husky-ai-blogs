@@ -12,6 +12,10 @@ belong here.
 
 ## Development
 
+Repository-wide rules live in [AGENTS.md](AGENTS.md). The reusable
+[Blog Authoring skill](llm-agent/skills/blog-authoring/SKILL.md) defines the
+shared visual style, writing standard, and new-post workflow for every article.
+
 Published article sources live in `content/posts/` as Markdown. Article routes
 in `app/posts/` render them at build time, including tables and reference links.
 The home page lists each published article. Edit the Markdown source to revise
